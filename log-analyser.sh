@@ -19,3 +19,6 @@ echo -e "${TOP_5_PH}\n"
 echo "Top 5 response status codes :"
 TOP_5_ST=$(cat nginx.log | awk -F '"' '{print $3}'| awk '{print $1}' | sort | uniq -c | sort -nrk1 | head -5 | awk '{print $2 " - " $1 " requests" }')
 echo -e "${TOP_5_ST}\n"
+echo "To 5 user agents :"
+TOP_5_UA=$(cat ${log_file} | awk -F '"' '{print $6}' | sort | uniq -c | sort -nrk1 | head -5 | awk '{print $2 " - " $1 " requests" }')
+echo -e "${TOP_5_UA} :\n"
